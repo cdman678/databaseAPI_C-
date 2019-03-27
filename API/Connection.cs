@@ -33,6 +33,7 @@ class Connect{
 		
 	try{
 		connection.Open();
+		MessageBox.Show("connection successful");
 		return true;
 	}
 	catch (MySqlException ex){
@@ -53,6 +54,7 @@ class Connect{
     //Close connection
     private bool CloseConnection(){
 	try{
+		MessageBox.Show("close successful");
 		connection.Close();
 		return true;
 	}
