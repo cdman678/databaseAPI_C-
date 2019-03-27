@@ -1,101 +1,119 @@
 // Add MySql Library
 using MySql.Data.MySqlClient;
 
-class Connect{
-	
-    //Class variables
-    private MySqlConnection connection;
-    private string server;
-    private string database;
-    private string uid;
-    private string password;
+class Connect
+{
 
-    //Constructor
-    public Connect(){
-        Initialize();
-    }
+	//Class variables
+	private MySqlConnection connection;
+	private string server;
+	private string database;
+	private string uid;
+	private string password;
+
+	//Constructor
+	public Connect()
+	{
+		Initialize();
+	}
 
     //Initialize values
-    private void Initialize(){
-		
-        server = "localhost";
-        database = "plants"; //This may need to change to a variable since we are using multiple connections
-        uid = "ubuntu";
-        password = "cornisgood";
-        string connectionString;
-        connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+	private void Initialize()
+	{
 
-        connection = new MySqlConnection(connectionString);
-    }
+		server = "localhost";
+		database = "plants"; //This may need to change to a variable since we are using multiple connections
+		uid = "ubuntu";
+		password = "cornisgood";
+		string connectionString;
+		connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-    //open connection to database
-    private bool OpenConnection(){
-		
-	try{
-		connection.Open();
-		MessageBox.Show("connection successful");
-		return true;
+		connection = new MySqlConnection(connectionString);
 	}
-	catch (MySqlException ex){
+
+	//open connection to database
+	private bool OpenConnection()
+	{
+
+		try
+		{
+			connection.Open();
+			MessageBox.Show("connection successful");
+			return true;
+		}
+		catch (MySqlException ex)
+		{
 		//0: Connection with server can not be found   |   1045: Error with username or password
-		switch (ex.Number){		
-			case 0:
+			switch (ex.Number)
+			{		
+				case 0:
 				MessageBox.Show("Cannot find connection");
 				break;
 
-			case 1045:
+				case 1045:
 				MessageBox.Show("Invalid username/password");
 				break;
-		}
+			}
 		return false;
+		}
 	}
-    }
 
-    //Close connection
-    private bool CloseConnection(){
-	try{
+	//Close connection
+	private bool CloseConnection()
+	{
+	try
+	{
 		MessageBox.Show("close successful");
 		connection.Close();
 		return true;
 	}
-	catch (MySqlException ex){
+	catch (MySqlException ex)
+	{
 		//Should display the error message generated from mySQL
 		MessageBox.Show(ex.Message);
 		return false;
 	}
 
-    //Insert statement
-    public void Insert(){
+	//Insert statement
+	public void Insert()
+	{
 	//TODO
-    }
+	}
 
-    //Update statement
-    public void Update(){
+	//Update statement
+	public void Update()
+	{
 	//TODO
-    }
+	}
 
-    //Delete statement
-    public void Delete(){
+	//Delete statement
+	public void Delete()
+	{
 	//TODO
-    }
+	}
 
-    //Select statement
-    public List <string> [] Select(){
+	//Select statement
+	public List <string> [] Select()
+	{
 	//TODO
-    }
+	}
 
-    //Count statement
-    public int Count(){
+	//Count statement
+	public int Count()
+	{
 	//TODO
-    }
+	}
 
-    //Backup
-    public void Backup(){
+	//Backup
+	public void Backup()
+	{
 	//TODO
-    }
+	}
 
-    //Restore
-    public void Restore(){
+	//Restore
+	public void Restore()
+	{
 	//TODO
-    }
+	}
+		
 }
