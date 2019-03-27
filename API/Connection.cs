@@ -21,7 +21,7 @@ class Connect
 	private void Initialize()
 	{
 
-		server = "3.16.160.176"; //swithces to local host when on the server
+		server = "3.16.160.176"; //swithces to local host when on the server. Changes after each launch
 		database = "plants"; //This may need to change to a variable since we are using multiple connections
 		uid = "ubuntu";
 		password = "cornisgood";
