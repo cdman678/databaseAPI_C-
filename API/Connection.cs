@@ -12,7 +12,7 @@ class Connect
 	private string password;
 
 	//Constructor
-	public void Connect()
+	public Connect()
 	{
 		Initialize();
 	}
@@ -21,7 +21,7 @@ class Connect
 	private void Initialize()
 	{
 
-		server = "localhost";
+		server = "3.16.160.176"; //swithces to local host when on the server
 		database = "plants"; //This may need to change to a variable since we are using multiple connections
 		uid = "ubuntu";
 		password = "cornisgood";
@@ -61,19 +61,22 @@ class Connect
 	//Close connection
 	private bool CloseConnection()
 	{
-	try
-	{
-		MessageBox.Show("close successful");
-		connection.Close();
-		return true;
+		try
+		{
+			MessageBox.Show("close successful");
+			connection.Close();
+			return true;
+		}
+		catch (MySqlException ex)
+		{
+			//Should display the error message generated from mySQL
+			MessageBox.Show(ex.Message);
+			return false;
+		}
 	}
-	catch (MySqlException ex)
-	{
-		//Should display the error message generated from mySQL
-		MessageBox.Show(ex.Message);
-		return false;
-	}
-
+		
+}
+/*
 	//Insert statement
 	public void Insert()
 	{
@@ -116,4 +119,4 @@ class Connect
 	//TODO
 	}
 		
-}
+*/
