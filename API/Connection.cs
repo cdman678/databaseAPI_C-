@@ -12,7 +12,7 @@ class Connect
 	private string password;
 
 	//Constructor
-	public Connect()
+	public void Connect()
 	{
 		Initialize();
 	}
