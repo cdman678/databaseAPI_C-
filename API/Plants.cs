@@ -1,70 +1,36 @@
 using System;
-using System.Collections.Generic;   //Strings
+//using System.Collections.Generic;   //Strings - wont need for final product
 using MySql.Data.MySqlClient;
 
 class Plants : Connect
 {
     //Constructor call to base case - selecting 'plants' database
-    public Plants() : base("plants")
-    {
-    }
+    public Plants() : base("plants") { }
 
-    //public wrapper for 'Select * FROM plants'
-    public List<string>[] ShowPlants()
-    {
-        return SelectAllPlants();
-    }
+    //This function needs to be called after each query  function to close the connection
+    public new void Close() { base.Close(); }
+
+    //public wrapper for 'Select * FROM plants' in SelectALLPlants
+    public MySqlDataReader ShowAll(string tableName) { return SelectAll(tableName); }
 
     //Select statement
-    private List<string>[] SelectAllPlants()
+    private MySqlDataReader SelectAll(string tableName)
     {
-        /***/
-        string query = "SELECT * FROM masterPlants"; //hardcoded for now
-        /***/
-
-        //Create a list to store the result
-        List<string>[] returnList = new List<string>[2];
-        returnList[0] = new List<string>();
-        returnList[1] = new List<string>();
+        //constructing query
+        string queryTemp = "SELECT * FROM ";
+        string query = queryTemp + tableName; 
 
         //Open connection
-        if (Open() == true)
-        {
-            //Create Command
-            MySqlCommand cmd = new MySqlCommand(query, connection);
+        Open();
 
-            //Create a data reader and Execute the command
-            MySqlDataReader dataReader = cmd.ExecuteReader();
+        //Create Command
+        MySqlCommand cmd = new MySqlCommand(query, connection);
 
-            //Read the data and store them in the list
-            while (dataReader.Read())
-            {
-                returnList[0].Add(dataReader["plantID"] + "");
-                returnList[1].Add(dataReader["name"] + "");
-            }
+        //Create a data reader and Execute the command
+        MySqlDataReader dataReader = cmd.ExecuteReader();
 
-            //close Data Reader
-            dataReader.Close();
+        //return the MySqlDataReader to be used
+        return (dataReader); 
 
-            /***/
-            int sizeOfList = returnList[0].Count;
-            Console.WriteLine("PlantID & PlantName");
-            for (int i = 0; i < sizeOfList; i++)
-            {
-                string temp = returnList[0][i] + " : " + returnList[1][i];
-                Console.WriteLine(temp);
-            }
-            /***/
-
-            //close Connection
-            Close();
-
-            //return list to be displayed
-            return returnList;
-        }
-        else
-        {
-            return returnList;
-        }
     }
 }
