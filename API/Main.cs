@@ -6,8 +6,9 @@ namespace testfunctions
     {
         public static void Main(string[] args)
         {
-            Connect testconn = new Connect();
-            testconn.Select();
+            //Connect testconn = new Connect();
+            Plants testPlant = new Plants();
+            testPlant.ShowPlants();
             Console.WriteLine("done");
         }
     }
