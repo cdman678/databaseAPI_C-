@@ -17,7 +17,7 @@ NOTE:
                 Once this function is called, the MySqlDataReader will be essentially become NULL
                 
       ShowAll(String tableName): This function accepts a table name as an input and returns the result of 'SELECT * FROM tableName' 
-                Acceptable tableName inside 'plants' : description, friends_enemies , plantData, masterPlants  
+                Acceptable tableName inside 'plants' : description, friends_enemies , plantData, plantDataNum, masterPlants  
 
     Class Gardens:
     
