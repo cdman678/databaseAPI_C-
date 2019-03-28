@@ -1,12 +1,14 @@
-using System; 
+using System;
 
-namespace Main{
-  class test 
-  { 
-  public static void Main( string[] args )
-  { 
-    Connect testconn = new Connect();
-    testconn.OpenConnection;
-    testconn.CloseConnection;
-  }
+namespace testfunctions
+{
+    class Test
+    {
+        public static void Main(string[] args)
+        {
+            Connect testconn = new Connect();
+            testconn.Select();
+            Console.WriteLine("done");
+        }
+    }
 }
