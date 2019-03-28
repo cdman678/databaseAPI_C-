@@ -11,10 +11,10 @@ class Connect
     private string uid;
     private string password;
 
-    //Constructor
+    //Constructor - Called from all subclasses - input is the name of the desired database you want to connect to
     protected Connect(string database) { Initialize(database); }
 
-    //Initialize values for connection
+    //Initialize values for connection - this has a field that needs to change upon server restart
     private void Initialize(string inputDatabase)
     {
 
@@ -67,6 +67,30 @@ class Connect
             Console.WriteLine(ex); //for testing
             return false;
         }
+    }
+
+
+
+    //Shared mySQL functions
+
+    //Select all statement - avaliable to all subclasses
+    protected MySqlDataReader SelectAll(string tableName)
+    {
+        //constructing query
+        string queryTemp = "SELECT * FROM ";
+        string query = queryTemp + tableName;
+
+        //Open connection
+        Open();
+
+        //Create Command
+        MySqlCommand cmd = new MySqlCommand(query, connection);
+
+        //Create a data reader and Execute the command
+        MySqlDataReader dataReader = cmd.ExecuteReader();
+
+        //return the MySqlDataReader to be used
+        return (dataReader);
     }
 
 }
