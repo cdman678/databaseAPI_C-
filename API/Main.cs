@@ -1,6 +1,6 @@
 using System;
 using MySql.Data.MySqlClient;
-//using System.Collections.Generic;
+///using System.Collections.Generic;
 
 namespace testfunctions
 {
@@ -11,8 +11,11 @@ namespace testfunctions
             //Connect testconn = new Connect();
             Plants testPlant = new Plants();
             MySqlDataReader plantlist = testPlant.ShowAll("masterPlants");
-            //interact with plantlit HERE
-            testPlant.Close();//this closes plantlist       
+            
+            //interact with plantlist HERE
+
+            //this closes plantlist
+            testPlant.Close();       
             Console.WriteLine("Done");
         }
     }
