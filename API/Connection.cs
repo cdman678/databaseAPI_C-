@@ -12,12 +12,9 @@ class Connect
     private string password;
 
     //Constructor
-    protected Connect(string database)
-    {
-        Initialize(database);
-    }
+    protected Connect(string database) { Initialize(database); }
 
-    //Initialize values
+    //Initialize values for connection
     private void Initialize(string inputDatabase)
     {
 
@@ -32,10 +29,8 @@ class Connect
         connection = new MySqlConnection(connectionString);
     }
 
-    protected bool Open()
-    {
-        return OpenConnection();
-    }
+    //Wrapper for OpenConnection
+    protected bool Open() { return OpenConnection(); }
 
     //open connection to database
     private bool OpenConnection()
@@ -44,7 +39,7 @@ class Connect
         try
         {
             connection.Open();
-            Console.WriteLine("Connection success"); //for testing
+            //Console.WriteLine("Connection success"); //for testing
             return true;
         }
         catch (MySqlException ex)
@@ -55,18 +50,16 @@ class Connect
         }
     }
 
-    protected bool Close()
-    {
-        return CloseConnection();
-    }
+    //Wrapper for CloseConnection
+    protected bool Close() { return CloseConnection(); }
 
-    //Close connection
+    //Close connection to database
     private bool CloseConnection()
     {
         try
         {
-            Console.WriteLine("Close success"); //for testing
             connection.Close();
+            //Console.WriteLine("Close success"); //for testing
             return true;
         }
         catch (MySqlException ex)
