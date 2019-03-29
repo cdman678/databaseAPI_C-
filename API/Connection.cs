@@ -18,7 +18,7 @@ class Connect
     private void Initialize(string inputDatabase)
     {
 
-        server = "3.17.67.60"; //swithces to local host when on the server  |  Needs to be changed with each server launch
+        server = "greenalytics.ga"; //swithces to local host when on the server  |  Needs to be changed with each server launch
         database = inputDatabase;
         uid = "ubuntu";
         password = "cornisgood";
@@ -35,7 +35,6 @@ class Connect
     //open connection to database
     private bool OpenConnection()
     {
-
         try
         {
             connection.Open();
@@ -89,7 +88,7 @@ class Connect
         //Create a data reader and Execute the command
         MySqlDataReader dataReader = cmd.ExecuteReader();
 
-        //return the MySqlDataReader to be used
+        //return the MySqlDataReader to be used - may need to switch this after talking to zack
         return (dataReader);
     }
 
